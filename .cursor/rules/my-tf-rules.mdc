@@ -1,6 +1,6 @@
 ---
-description: Terraform rules and tasks for Azure infrastructure
-globs: ["**/*.tf", "**/*.tfvars"]
+description: 
+globs: 
 alwaysApply: true
 ---
 {
@@ -107,14 +107,5 @@ alwaysApply: true
         "**/.terraform.lock.hcl",
         "**/examples/**",
         "**/tests/**"
-    ],
-    "tasks": {
-        "onSave": [
-            {
-                "name": "Format Terraform Files",
-                "command": "terraform fmt -recursive",
-                "glob": "**/*.tf"
-            }
-        ]
-    }
+    ]
 } 
