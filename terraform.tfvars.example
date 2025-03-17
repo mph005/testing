@@ -1,0 +1,11 @@
+# These variables will be used in Terraform Cloud workspace
+resource_group_name     = "aks-demo-rg"
+resource_group_location = "East US"
+cluster_name            = "aks-demo-cluster"
+kubernetes_version      = "1.27"
+node_count              = 2
+vm_size                 = "Standard_D2s_v3"
+tags = {
+  Environment = "Development"
+  Project     = "AKS Demo"
+} 
