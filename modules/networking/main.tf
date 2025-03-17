@@ -37,7 +37,7 @@ resource "azurerm_bastion_host" "bastion" {
 
   ip_configuration {
     name                 = "configuration"
-    subnet_id           = azurerm_subnet.bastion_subnet.id
+    subnet_id            = azurerm_subnet.bastion_subnet.id
     public_ip_address_id = azurerm_public_ip.bastion_ip.id
   }
 }
@@ -54,9 +54,9 @@ resource "azurerm_network_security_group" "vm_nsg" {
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
-    source_port_range         = "*"
+    source_port_range          = "*"
     destination_port_ranges    = ["22", "3389"]
-    source_address_prefix     = "VirtualNetwork"
+    source_address_prefix      = "VirtualNetwork"
     destination_address_prefix = "*"
   }
 }

@@ -7,7 +7,7 @@ resource "azurerm_storage_account" "storage" {
   tags                     = var.tags
 
   network_rules {
-    default_action = "Deny"
+    default_action             = "Deny"
     virtual_network_subnet_ids = [var.vm_subnet_id]
   }
 }
@@ -20,7 +20,7 @@ resource "random_string" "storage_suffix" {
 
 resource "azurerm_storage_container" "blob_container" {
   name                  = "data"
-  storage_account_name  = azurerm_storage_account.storage.name
+  storage_account_id    = azurerm_storage_account.storage.id
   container_access_type = "private"
 }
 

@@ -26,13 +26,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
   name                            = "vm${count.index + 1}-${var.environment}"
   resource_group_name             = var.resource_group_name
   location                        = var.location
-  size                           = var.vm_size
+  size                            = var.vm_size
   admin_username                  = var.admin_username
   admin_password                  = var.admin_password
   disable_password_authentication = false
-  availability_set_id            = azurerm_availability_set.vm_avset.id
-  network_interface_ids          = [azurerm_network_interface.vm_nic[count.index].id]
-  tags                           = var.tags
+  availability_set_id             = azurerm_availability_set.vm_avset.id
+  network_interface_ids           = [azurerm_network_interface.vm_nic[count.index].id]
+  tags                            = var.tags
 
   os_disk {
     caching              = "ReadWrite"

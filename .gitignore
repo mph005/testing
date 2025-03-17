@@ -48,7 +48,7 @@ credentials.json
 *~
 
 # Cursor specific
-.cursor/
+#.cursor/
 .cursor-test/
 .cursor-test-history/
 .aicursor/
