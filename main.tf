@@ -1,9 +1,15 @@
+# Main Terraform configuration file for Azure VM Storage Project
+# This file orchestrates the creation of all infrastructure components by calling the respective modules
+
+# Create the main resource group that will contain all other resources
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
   tags     = var.tags
 }
 
+# Deploy the networking infrastructure including VNet, subnets, NSGs, and Bastion host
+# This module sets up the network foundation for the VMs and storage
 module "networking" {
   source              = "./modules/networking"
   resource_group_name = azurerm_resource_group.rg.name
@@ -12,6 +18,8 @@ module "networking" {
   tags                = var.tags
 }
 
+# Deploy the storage infrastructure including storage account and blob container
+# This module creates the shared storage that will be accessible by the VMs
 module "storage" {
   source                           = "./modules/storage"
   resource_group_name              = azurerm_resource_group.rg.name
@@ -24,6 +32,8 @@ module "storage" {
   tags                             = var.tags
 }
 
+# Deploy the compute infrastructure including VMs and availability set
+# This module creates the VMs that will access the shared storage
 module "compute" {
   source              = "./modules/compute"
   resource_group_name = azurerm_resource_group.rg.name

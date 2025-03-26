@@ -1,6 +1,13 @@
+# Terraform configuration file
+# This file defines the required providers, versions, and backend configuration
+
+# Specify the required Terraform version
+# Using version 1.0.0 or higher for stability and features
 terraform {
   required_version = ">= 1.0.0"
 
+  # Configure required providers with version constraints
+  # Using Azure RM provider version 3.0 or higher
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
@@ -8,6 +15,8 @@ terraform {
     }
   }
 
+  # Configure Terraform Cloud as the backend
+  # This provides state management, version control, and collaboration features
   cloud {
     organization = "your-org-name"
     workspaces {
@@ -16,6 +25,8 @@ terraform {
   }
 }
 
+# Configure the Azure provider with custom features
+# Enable resource group protection to prevent accidental deletion
 provider "azurerm" {
   features {
     resource_group {
